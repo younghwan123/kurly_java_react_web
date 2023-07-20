@@ -1,0 +1,120 @@
+
+// 아이디찾기
+1. login.jsp 
+   로그인폼 화면
+   링크
+   아이디찾기 => 클릭이동 | 비밀번호찾기
+
+2. idSearchForm.jsp
+이름, 이메일 전송 => 액션 파일에 전송
+
+3. idSearchAction.jsp
+파라미터 값  이름, 이메일 => 유효성검사
+
+UserDTO userDTO = new UserDAO().검색함수(파라미터 값  이름, 이메일);
+반환값 아이디를 => idSearchResult.jsp 쿼리스트링으로 보낸다.
+
+4. UserDAO()
+idSearch(String userName, String userEmail) 매개변수 받아서 쿼리 실행
+- 이름을 검색 => 이메일 => userDTO.append(rs.getString(2))
+리턴 반환 userDTO  location.href ="./idSearchResult.jsp?userId=<%=userDTO.getUserId()%>";
+
+
+5. idSearchResult.jsp
+화면에 아이디를   보여준다.
+끝.
+
+userDTO.getUserId(); => request.getParameter("userId");
+
+
+
+
+// 비밀번호찾기
+1. login.jsp 
+   로그인폼 화면
+   링크
+   아이디찾기 | 비밀번호찾기  => 클릭이동
+2. pwSearchForm.jsp
+아이디, 이메일 전송 => 액션 파일에 전송  
+   
+3. pwSearchAction.jsp
+파라미터 값  아이디, 이메일 => 유효성검사
+
+UserDTO userDTO = new UserDAO().검색함수(파라미터 값  아이디, 이메일);
+반환값 아이디를 => pwSearchResult.jsp 쿼리스트링으로 보낸다.
+
+4. UserDAO()
+idSearch(String userId, String userEmail) 매개변수 받아서 쿼리 실행
+- 아이디를 검색 => 이메일 => userDTO.append(rs.getString(2)) 비밀번호
+리턴 반환 userDTO  location.href ="./pwSearchResult.jsp?userPw=<%=userDTO.getUserPw()%>";
+
+5. pwSearchResult.jsp
+화면에 비밀번호를   보여준다.
+끝.
+
+ request.getParameter("userPw");
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://localhost:8080/bbs/NewFile.jsp
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ page import = "bbs.BbsDAO" %> 
+<%@ page import = "bbs.BbsDTO" %> 
+<%@ page import = "java.util.ArrayList" %> 
+<%
+	request.setCharacterEncoding("UTF-8");
+%> 
+
+
+		<%
+			int pageNumber = 1;			
+			if(request.getParameter("pageNumber") !=null ){
+				pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+			}
+			
+			BbsDAO bbsDAO = new BbsDAO(); 
+		    ArrayList<BbsDTO> list = bbsDAO.getList(pageNumber);
+			
+		    // JSON 형식 데이터 만들기
+		    // {"공지사항" : [
+		    //           {"번호":1, "제목":"...", "작성자":"...", "작성일":"..."},
+		    //           {"번호":2, "제목":"...", "작성자":"...", "작성일":"..."},
+		    //           :
+		    //           : 	 
+		    //           {"번호":25, "제목":"...", "작성자":"...", "작성일":"..."} //마직막엔 콤머제외
+		    //         ]}
+		    //   
+		    // 
+		    StringBuffer result = new StringBuffer("");
+		    result.append("{\"공지사항\" : [");
+		    
+		    for(int i=0; i<list.size(); i++){
+		    	result.append("{\"번호\":\"" + list.get(i).getBbsId() + "\","); 
+		    	result.append("{\"제목\":\"" + list.get(i).getSubject() + "\","); 
+		    	result.append("{\"작성자\":\"" + list.get(i).getUserId() + "\","); 
+		    	result.append("{\"작성일\":\"" + list.get(i).getWriteDate() + "\","); 
+		    		    			
+				
+			}
+		    
+		    result.append("]}");
+		%>
+			
+					
+					
+					
+					

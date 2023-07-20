@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ page import = "bbs.BbsDAO" %>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+%> 
+
+<jsp:useBean id="BbsDTO" class="bbs.BbsDTO" scope="page"/> 
+<jsp:setProperty name='BbsDTO'  property="userId"/>
+<jsp:setProperty name='BbsDTO'  property="subject"/>
+<jsp:setProperty name='BbsDTO'  property="content"/>
+    
+    
+    
+    
+<%
+		BbsDAO bbsDAO = new BbsDAO(); //  로그인 아이디 userId 로 글쓰기
+		int result = bbsDAO.write( BbsDTO.getUserId() , BbsDTO.getSubject(), BbsDTO.getContent() );
+		
+		out.println(result);
+%>	
+
+		
+</body>
+</html>

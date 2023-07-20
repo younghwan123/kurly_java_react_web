@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Administrator\Documents\풀스텍과정_최영환\07월\0719_자바기반_리엑트_포트폴리오_배포\java_shop\kurly"/>
+			<item value="D:\교사문선종_풀스택과정\강의산출물\7월\0719_자바기반_리액트_포트폴리오_마켓컬리_JAVA_깃허브_카페24_배포\java_shop\kurly"/>
+			<item value="D:\교사문선종_풀스택과정\강의산출물\7월\0718_자바기반_리액트_포트폴리오_마켓컬리_로그인구현하기_게시판_CRUD\java_shop\kurly"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+</section>
