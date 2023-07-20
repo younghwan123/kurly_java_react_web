@@ -1,8 +1,0 @@
-CREATE TABLE 테이블명(
-    필드명  타입 null 값 PRIMARY KEY,
-    필드명  타입 null COLLATE utf8mb4_general_ci(한글이 들어가는 필드만 써주기) 값,
-    필드명  타입 null 값,
-    필드명  타입 null 값 
-)ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='테이블에 해당되는 이름';
-
-
